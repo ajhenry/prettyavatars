@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useSession } from 'next-auth/react';
 
 import Layout from '@/components/layout/Layout';
 import ArrowLink from '@/components/links/ArrowLink';
@@ -6,6 +6,8 @@ import ButtonLink from '@/components/links/ButtonLink';
 import UnderlineLink from '@/components/links/UnderlineLink';
 import UnstyledLink from '@/components/links/UnstyledLink';
 import Seo from '@/components/Seo';
+
+import { trpc } from '@/utils/trpc';
 
 /**
  * SVGR Support
@@ -21,6 +23,14 @@ import Vercel from '~/svg/Vercel.svg';
 // to customize the default configuration.
 
 export default function HomePage() {
+  const data = trpc.post.create.useMutation();
+  const { data: session } = useSession();
+  console.log(session);
+
+  if (!data) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <Layout>
       {/* <Seo templateTitle='Home' /> */}
