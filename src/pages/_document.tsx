@@ -13,6 +13,8 @@ export default function Document() {
         />
       </Head>
       <body>
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+        <script src='noflash.js' />
         <Main />
         <NextScript />
       </body>

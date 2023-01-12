@@ -7,19 +7,20 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "lib",
+    "declaration": true,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": ".",
+    "baseUrl": "./src/lib",
     "paths": {
       "@/*": ["./src/*"]
     },
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules"],
   "moduleResolution": ["node_modules", "node"]
 }

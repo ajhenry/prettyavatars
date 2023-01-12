@@ -1,5 +1,9 @@
+import { config } from '@fortawesome/fontawesome-svg-core';
 import { AppProps } from 'next/app';
 import { SessionProvider } from 'next-auth/react';
+
+import '@fortawesome/fontawesome-svg-core/styles.css';
+config.autoAddCss = false;
 
 import '@/styles/colors.css';
 import '@/styles/globals.css';

@@ -32,7 +32,7 @@ export default function ComponentsPage() {
     return mode === 'dark' ? setMode('light') : setMode('dark');
   }
 
-  const textColor = mode === 'dark' ? 'text-gray-300' : 'text-gray-600';
+  const textColor = mode === 'dark' ? 'text-gray-100' : 'text-gray-600';
 
   return (
     <Layout>

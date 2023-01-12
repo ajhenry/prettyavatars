@@ -1,3 +1,7 @@
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import useDarkMode from 'use-dark-mode';
+
 import UnstyledLink from '@/components/links/UnstyledLink';
 
 const links = [
@@ -6,13 +10,15 @@ const links = [
 ];
 
 const Header = () => {
+  const { value, toggle } = useDarkMode();
+
   return (
-    <header className='sticky top-0 z-50 -mb-14'>
+    <header className='top-0 z-50 -mb-14'>
       <div className='layout flex h-14 items-center justify-between'>
         <UnstyledLink href='/' className='font-bold hover:text-gray-600'>
           Home
         </UnstyledLink>
-        <nav>
+        <nav className='flex flex-row items-center space-x-4'>
           <ul className='flex items-center justify-between space-x-4'>
             {links.map(({ href, label }) => (
               <li key={`${href}${label}`}>
@@ -22,6 +28,9 @@ const Header = () => {
               </li>
             ))}
           </ul>
+          <button onClick={() => toggle()} className='w-12'>
+            <FontAwesomeIcon icon={value ? faSun : faMoon} size='lg' />
+          </button>
         </nav>
       </div>
     </header>

@@ -23,7 +23,16 @@ module.exports = {
           800: 'rgb(var(--tw-color-primary-800) / <alpha-value>)',
           900: 'rgb(var(--tw-color-primary-900) / <alpha-value>)',
         },
-        dark: '#222222',
+        dark: {
+          bg: 'rgb(var(--tw-color-primary-900) / <alpha-value>)',
+          paper: 'rgb(var(--tw-color-primary-700) / <alpha-value>)',
+          text: 'rgb(var(--tw-color-primary-50) / <alpha-value>)',
+        },
+        light: {
+          bg: 'rgb(var(--tw-color-primary-50) / <alpha-value>)',
+          paper: 'rgb(var(--tw-color-primary-100) / <alpha-value>)',
+          text: 'rgb(var(--tw-color-primary-900) / <alpha-value>)',
+        },
       },
       keyframes: {
         flicker: {

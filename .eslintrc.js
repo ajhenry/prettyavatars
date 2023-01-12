@@ -38,45 +38,6 @@ module.exports = {
       },
     ],
     //#endregion  //*======== Unused Import ===========
-
-    //#region  //*=========== Import Sort ===========
-    'simple-import-sort/exports': 'warn',
-    'simple-import-sort/imports': [
-      'warn',
-      {
-        groups: [
-          // ext library & side effect imports
-          ['^@?\\w', '^\\u0000'],
-          // {s}css files
-          ['^.+\\.s?css$'],
-          // Lib and hooks
-          ['^@/lib', '^@/hooks'],
-          // static data
-          ['^@/data'],
-          // components
-          ['^@/components', '^@/container'],
-          // zustand store
-          ['^@/store'],
-          // Other imports
-          ['^@/'],
-          // relative paths up until 3 level
-          [
-            '^\\./?$',
-            '^\\.(?!/?$)',
-            '^\\.\\./?$',
-            '^\\.\\.(?!/?$)',
-            '^\\.\\./\\.\\./?$',
-            '^\\.\\./\\.\\.(?!/?$)',
-            '^\\.\\./\\.\\./\\.\\./?$',
-            '^\\.\\./\\.\\./\\.\\.(?!/?$)',
-          ],
-          ['^@/types'],
-          // other that didnt fit in
-          ['^'],
-        ],
-      },
-    ],
-    //#endregion  //*======== Import Sort ===========
   },
   globals: {
     React: true,
