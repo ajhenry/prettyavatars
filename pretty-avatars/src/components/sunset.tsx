@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { getRandomColor, hashCode } from '../lib/utils'
+import { AvatarProps } from './avatar'
 
 const ELEMENTS = 4
 const SIZE = 80
@@ -15,13 +16,7 @@ function generateColors(name: string, colors: string[]) {
   return colorsList
 }
 
-interface AvatarSunsetProps {
-  name: string
-  colors: string[]
-  size?: number
-  square?: boolean
-  title?: boolean
-}
+export interface AvatarSunsetProps extends AvatarProps {}
 
 const AvatarSunset: React.FC<AvatarSunsetProps> = (props) => {
   const sunsetColors = generateColors(props.name, props.colors)
@@ -36,7 +31,6 @@ const AvatarSunset: React.FC<AvatarSunsetProps> = (props) => {
       width={props.size}
       height={props.size}
     >
-      {props.title && <title>{props.name}</title>}
       <mask
         id='mask__sunset'
         maskUnits='userSpaceOnUse'

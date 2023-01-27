@@ -2,35 +2,18 @@ import Color from 'color'
 import * as React from 'react'
 import ReactHtmlParser from 'react-html-parser'
 import TextToSVG from 'text-to-svg'
-import { getRandomColor, hashCode } from '../lib/utils'
+import { getInitials, getRandomColor, hashCode } from '../lib/utils'
+import { AvatarProps } from './avatar'
 
 const SIZE = 80
 
-const getInitials = (name: string) => {
-  let names = name.trim().split(' '),
-    initials = names[0].substring(0, 1).toUpperCase()
-
-  if (names.length > 1) {
-    initials += names[names.length - 1].substring(0, 1).toUpperCase()
-  }
-
-  if (initials.length === 0) {
-    initials = ''
-  }
-
-  return initials
-}
-
-interface AvatarLetterProps {
-  name: string
-  colors: string[]
-  size?: number
-  square?: boolean
-  title?: boolean
+export interface AvatarLetterProps extends AvatarProps {
+  singleLetter?: boolean
+  fontUrl?: string
 }
 
 const AvatarLetter: React.FC<AvatarLetterProps> = (props) => {
-  const { name, colors } = props
+  const { name, colors, singleLetter, fontUrl } = props
   const [loader, setLoader] = React.useState<TextToSVG | null>(null)
   // pick a random color from the colors props and then use the color.lighten(Math.random() * 0.5) to get a random color
   const color = getRandomColor(hashCode(props.name), colors, colors.length)
@@ -40,21 +23,24 @@ const AvatarLetter: React.FC<AvatarLetterProps> = (props) => {
   const darkened = Color(color)
     .darken(0.2 + Math.random() * 0.5)
     .hex()
-  const initials = getInitials(name)
+  const initials = getInitials(name, singleLetter)
 
   React.useEffect(() => {
-    TextToSVG.load('/fonts/Inter-Black.ttf', function (err, textToSVG) {
-      if (!textToSVG) {
-        if (window === undefined) {
-          console.log(err)
+    TextToSVG.load(
+      fontUrl ?? '/fonts/Inter-Black.ttf',
+      function (err, textToSVG) {
+        if (!textToSVG) {
+          if (window === undefined) {
+            console.log(err)
+          }
+          return
         }
-        return
+        if (!loader) {
+          setLoader(textToSVG)
+        }
       }
-      if (!loader) {
-        setLoader(textToSVG)
-      }
-    })
-  }, [loader])
+    )
+  }, [loader, fontUrl])
 
   const generatePath = (letters: string) => {
     if (!loader) {

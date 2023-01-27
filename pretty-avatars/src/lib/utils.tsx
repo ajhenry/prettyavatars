@@ -57,3 +57,19 @@ export const getContrast = (hexcolor: string) => {
   // Check contrast
   return yiq >= 128 ? '#000000' : '#FFFFFF';
 };
+
+
+export const getInitials = (name: string, singleLetter: boolean = false) => {
+  let names = name.trim().split(' '),
+    initials = names[0].substring(0, 1).toUpperCase()
+
+  if (names.length > 1 && !singleLetter) {
+    initials += names[names.length - 1].substring(0, 1).toUpperCase()
+  }
+
+  if (initials.length === 0) {
+    initials = ''
+  }
+
+  return initials
+}

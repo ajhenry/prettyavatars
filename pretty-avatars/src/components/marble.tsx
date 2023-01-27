@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { getRandomColor, getUnit, hashCode } from '../lib/utils'
+import { AvatarProps } from './avatar'
 
 const ELEMENTS = 3
 const SIZE = 80
@@ -19,13 +20,7 @@ function generateColors(name: string, colors: string[]) {
   return elementsProperties
 }
 
-interface AvatarMarbleProps {
-  name: string
-  colors: string[]
-  size?: number
-  square?: boolean
-  title?: boolean
-}
+export interface AvatarMarbleProps extends AvatarProps {}
 
 const AvatarMarble: React.FC<AvatarMarbleProps> = (props) => {
   const properties = generateColors(props.name, props.colors)
@@ -39,7 +34,6 @@ const AvatarMarble: React.FC<AvatarMarbleProps> = (props) => {
       width={props.size}
       height={props.size}
     >
-      {props.title && <title>{props.name}</title>}
       <mask
         id='mask__marble'
         maskUnits='userSpaceOnUse'

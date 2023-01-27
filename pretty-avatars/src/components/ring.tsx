@@ -1,5 +1,6 @@
 import React from 'react'
 import { getRandomColor, hashCode } from '../lib/utils'
+import { AvatarProps } from './avatar'
 
 const SIZE = 90
 const COLORS = 5
@@ -24,13 +25,7 @@ function generateColors(colors: string[], name: string) {
   return colorsList
 }
 
-interface AvatarRingProps {
-  name: string
-  colors: string[]
-  size?: number
-  square?: boolean
-  title?: boolean
-}
+export interface AvatarRingProps extends AvatarProps {}
 
 const AvatarRing: React.FC<AvatarRingProps> = (props) => {
   const ringColors = generateColors(props.colors, props.name)
@@ -44,7 +39,6 @@ const AvatarRing: React.FC<AvatarRingProps> = (props) => {
       width={props.size}
       height={props.size}
     >
-      {props.title && <title>{props.name}</title>}
       <mask
         id='mask__ring'
         maskUnits='userSpaceOnUse'

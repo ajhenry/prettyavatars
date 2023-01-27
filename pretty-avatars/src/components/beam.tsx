@@ -6,6 +6,7 @@ import {
   getUnit,
   hashCode,
 } from '../lib/utils'
+import { AvatarProps } from './avatar'
 
 const SIZE = 36
 
@@ -46,13 +47,7 @@ function generateData(name: string, colors: string[]) {
   return data
 }
 
-interface AvatarBeamProps {
-  name: string
-  colors: string[]
-  size?: number
-  square?: boolean
-  title?: boolean
-}
+export interface AvatarBeamProps extends AvatarProps {}
 
 const AvatarBeam: React.FC<AvatarBeamProps> = (props) => {
   const data = generateData(props.name, props.colors)
@@ -66,7 +61,6 @@ const AvatarBeam: React.FC<AvatarBeamProps> = (props) => {
       width={props.size}
       height={props.size}
     >
-      {props.title && <title>{props.name}</title>}
       <mask
         id='mask__beam'
         maskUnits='userSpaceOnUse'

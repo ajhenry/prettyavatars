@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { getBoolean, getRandomColor, getUnit, hashCode } from '../lib/utils'
+import { AvatarProps } from './avatar'
 
 const ELEMENTS = 4
 const SIZE = 80
@@ -19,13 +20,7 @@ function generateColors(name: string, colors: string[]) {
   return elementsProperties
 }
 
-interface AvatarBauhausProps {
-  name: string
-  colors: string[]
-  size?: number
-  square?: boolean
-  title?: boolean
-}
+export interface AvatarBauhausProps extends AvatarProps {}
 
 const AvatarBauhaus: React.FC<AvatarBauhausProps> = (props) => {
   const properties = generateColors(props.name, props.colors)
@@ -39,7 +34,6 @@ const AvatarBauhaus: React.FC<AvatarBauhausProps> = (props) => {
       width={props.size}
       height={props.size}
     >
-      {props.title && <title>{props.name}</title>}
       <mask
         id='mask__bauhaus'
         maskUnits='userSpaceOnUse'
