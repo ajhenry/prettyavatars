@@ -2,51 +2,52 @@ import {
   faCircle,
   faRefresh,
   faSquare,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Popover } from '@headlessui/react';
-import clsx from 'clsx';
-import palettes from 'nice-color-palettes';
-import { AvatarProps } from 'pretty-avatars';
-import { useState } from 'react';
-import { SketchPicker } from 'react-color';
-import useDarkMode from 'use-dark-mode';
+} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Popover } from '@headlessui/react'
+import clsx from 'clsx'
+import palettes from 'nice-color-palettes'
+import { AvatarProps } from 'pretty-avatars'
+import { useState } from 'react'
+import { SketchPicker } from 'react-color'
+import useDarkMode from 'use-dark-mode'
 
-import { AvatarBlock } from '@/components/Avatar';
+import { AvatarBlock } from '@/components/Avatar'
 
 const variants: AvatarProps['variant'][] = [
+  'letter',
   'pixel',
   'bauhaus',
   'ring',
   'beam',
   'sunset',
   'marble',
-];
+]
 
 // Picks a random color palette
 const randomizeColors = () => {
-  return palettes[Math.floor(Math.random() * palettes.length)];
-};
+  return palettes[Math.floor(Math.random() * palettes.length)]
+}
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface PlaygroundProps {}
 
 export const Playground: React.FC<PlaygroundProps> = () => {
-  const { value: isDarkMode } = useDarkMode(true);
-  const [size, setSize] = useState(80);
-  const [colors, setColors] = useState<string[]>(randomizeColors());
-  const [square, setSquare] = useState(false);
+  const { value: isDarkMode } = useDarkMode(true)
+  const [size, setSize] = useState(80)
+  const [colors, setColors] = useState<string[]>(randomizeColors())
+  const [square, setSquare] = useState(false)
 
   const updateColors = (color: string, position: number, colors: string[]) => {
-    const newColors = [...colors];
-    newColors[position] = color;
-    setColors(newColors);
-  };
+    const newColors = [...colors]
+    newColors[position] = color
+    setColors(newColors)
+  }
 
   return (
-    <div className='mt-16 flex flex-col justify-center'>
+    <div id='playground' className='mt-16 flex flex-col justify-center'>
       <div>
-        <h2 className='text-5xl font-extrabold'>Playground</h2>
+        <h2 className='text-6xl font-extrabold'>Playground</h2>
       </div>
       <div className='sticky mt-4 flex flex-row justify-center space-x-4'>
         <div
@@ -118,7 +119,7 @@ export const Playground: React.FC<PlaygroundProps> = () => {
           className={clsx(
             'w-auto space-x-1 rounded p-1',
             isDarkMode ? 'bg-dark-paper' : 'bg-light-paper',
-            'flex inline-flex flex-row items-center'
+            'inline-flex flex-row items-center'
           )}
         >
           {colors.map((color, i) => (
@@ -159,8 +160,8 @@ export const Playground: React.FC<PlaygroundProps> = () => {
       {variants.map((variant) => (
         <div className='mt-8' key={variant}>
           <h3 className='text-left text-3xl'>{variant}</h3>
-          <div className='mt-4 flex flex-row flex-wrap justify-center space-x-2'>
-            {Array.from({ length: 16 }).map((_, i) => (
+          <div className={clsx('mt-4 flex flex-row flex-wrap justify-around')}>
+            {Array.from({ length: 14 }).map((_, i) => (
               <AvatarBlock
                 key={i}
                 variant={variant}
@@ -173,5 +174,5 @@ export const Playground: React.FC<PlaygroundProps> = () => {
         </div>
       ))}
     </div>
-  );
-};
+  )
+}

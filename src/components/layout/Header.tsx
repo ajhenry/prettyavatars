@@ -13,7 +13,7 @@ const Header = () => {
   const { value, toggle } = useDarkMode();
 
   return (
-    <header className='top-0 z-50 -mb-14'>
+    <header className='top-0 z-10 w-full'>
       <div className='layout flex h-14 items-center justify-between'>
         <UnstyledLink href='/' className='font-bold hover:text-gray-600'>
           Home
@@ -34,7 +34,7 @@ const Header = () => {
         </nav>
       </div>
     </header>
-  );
+  )
 };
 
 export default Header;

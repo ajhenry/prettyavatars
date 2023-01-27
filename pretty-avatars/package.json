@@ -3,8 +3,8 @@
   "description": "Pretty avatars is a tiny JavaScript React library that generates custom, SVG-based, round avatars from any username and color palette.",
   "homepage": "https://prettyavatars.com/",
   "version": "1.7.0",
-  "main": "lib/index.jsx",
-  "types": "lib/index.d.ts",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/ajhenry/pretty-avatars"
@@ -21,7 +21,7 @@
     "avatar placeholder"
   ],
   "scripts": {
-    "dev": "node scripts/start.js",
+    "dev": "tsc --watch",
     "start": "node scripts/start.js",
     "build": "tsc -b .",
     "demo": "node scripts/demo.js",
@@ -35,6 +35,8 @@
   "devDependencies": {
     "@babel/core": "7.6.0",
     "@svgr/webpack": "4.3.2",
+    "@types/react-html-parser": "^2.0.2",
+    "@types/text-to-svg": "^3.1.1",
     "@typescript-eslint/eslint-plugin": "^2.2.0",
     "@typescript-eslint/parser": "^2.2.0",
     "babel-eslint": "10.0.3",
@@ -162,5 +164,10 @@
       "react-app"
     ]
   },
-  "dependencies": {}
+  "dependencies": {
+    "color-contrast-checker": "^2.1.0",
+    "opentype.js": "^1.3.4",
+    "react-html-parser": "^2.0.2",
+    "text-to-svg": "^3.1.5"
+  }
 }

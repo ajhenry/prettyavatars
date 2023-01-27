@@ -1,13 +1,13 @@
-import Avatar, { AvatarProps } from 'pretty-avatars';
-import { useState } from 'react';
+import Avatar, { AvatarProps } from 'pretty-avatars'
+import { useState } from 'react'
 
-import { generateName } from '@/lib/fake';
+import { generateName } from '@/lib/fake'
 
 interface AvatarBlockProps {
-  variant?: AvatarProps['variant'];
-  colors?: string[];
-  size?: number;
-  square?: boolean;
+  variant?: AvatarProps['variant']
+  colors?: string[]
+  size?: number
+  square?: boolean
 }
 
 export const AvatarBlock: React.FC<AvatarBlockProps> = ({
@@ -16,7 +16,7 @@ export const AvatarBlock: React.FC<AvatarBlockProps> = ({
   variant,
   square,
 }) => {
-  const [name, setName] = useState(generateName());
+  const [name, setName] = useState(generateName())
 
   return (
     <div className='m-2 flex flex-col items-center'>
@@ -44,5 +44,5 @@ export const AvatarBlock: React.FC<AvatarBlockProps> = ({
         onChange={(v) => setName(v.target.value)}
       />
     </div>
-  );
-};
+  )
+}

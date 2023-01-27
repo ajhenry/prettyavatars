@@ -1,12 +1,14 @@
-import React from 'react'; // Do not remove line
-import AvatarBauhaus from '../../components/bauhaus'
-import AvatarBeam from '../../components/beam'
-import AvatarMarble from '../../components/marble'
-import AvatarPixel from '../../components/pixel'
-import AvatarRing from '../../components/ring'
-import AvatarSunset from '../../components/sunset'
+import React from 'react' // Do not remove line
+import AvatarBauhaus from './bauhaus'
+import AvatarBeam from './beam'
+import AvatarLetter from './letter'
+import AvatarMarble from './marble'
+import AvatarPixel from './pixel'
+import AvatarRing from './ring'
+import AvatarSunset from './sunset'
 
 const variants = [
+  'letter',
   'pixel',
   'bauhaus',
   'ring',
@@ -59,6 +61,7 @@ const Avatar = ({
     return 'marble'
   }
   const avatars: Record<string, React.ReactElement> = {
+    letter: <AvatarLetter {...avatarProps} />,
     pixel: <AvatarPixel {...avatarProps} />,
     bauhaus: <AvatarBauhaus {...avatarProps} />,
     ring: <AvatarRing {...avatarProps} />,

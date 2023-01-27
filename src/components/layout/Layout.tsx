@@ -1,20 +1,18 @@
-import clsx from 'clsx';
-import * as React from 'react';
-import useDarkMode from 'use-dark-mode';
+import clsx from 'clsx'
+import * as React from 'react'
+import useDarkMode from 'use-dark-mode'
 
-import { Footer } from '@/components/layout/Footer';
-import Header from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer'
+import Header from '@/components/layout/Header'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const { value } = useDarkMode(true);
+  const { value: _ } = useDarkMode(true)
 
-  console.log('dark mode: ', value);
-  // Put Header or Footer Here
   return (
-    <div className={clsx('min-h-screen')}>
+    <div className={clsx('flex min-h-screen flex-col')}>
       <Header />
-      <div className={clsx('h-full')}>{children}</div>
+      <div className={clsx('h-full flex-1')}>{children}</div>
       <Footer />
     </div>
-  );
+  )
 }
