@@ -113,7 +113,7 @@ export const Playground: React.FC<PlaygroundProps> = () => {
               'transition-all duration-200 ease-in-out'
             )}
           >
-            <FontAwesomeIcon icon={faCircle} size={isNonMobile ? 'xl' : '2x'} />
+            <FontAwesomeIcon icon={faCircle} size={isNonMobile ? 'lg' : '2x'} />
           </button>
           <button
             onClick={() => setSize(140)}
