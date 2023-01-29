@@ -2,26 +2,30 @@ import Color from 'color'
 import * as React from 'react'
 import ReactHtmlParser from 'react-html-parser'
 import TextToSVG from 'text-to-svg'
-import { getInitials, getRandomColor, hashCode } from '../lib/utils'
+import { getInitials, getRandomColor, hashCode, sfc } from '../lib/utils'
 import { AvatarProps } from './avatar'
 
 const SIZE = 80
 
+const isSSR = typeof window === 'undefined'
+
 export interface AvatarLetterProps extends AvatarProps {
   singleLetter?: boolean
   fontUrl?: string
+  unstable?: boolean
 }
 
 const AvatarLetter: React.FC<AvatarLetterProps> = (props) => {
-  const { name, colors, singleLetter, fontUrl } = props
+  const { name, colors, singleLetter, fontUrl, unstable } = props
   const [loader, setLoader] = React.useState<TextToSVG | null>(null)
-  // pick a random color from the colors props and then use the color.lighten(Math.random() * 0.5) to get a random color
-  const color = getRandomColor(hashCode(props.name), colors, colors.length)
+  const seed = hashCode(props.name)
+  const [color, setColor] = React.useState<string>()
+
   const lightened = Color(color)
-    .lighten(0.2 + Math.random() * 0.5)
+    .lighten(0.2 + sfc(unstable ? Math.random() : seed)() * 0.5)
     .hex()
   const darkened = Color(color)
-    .darken(0.2 + Math.random() * 0.5)
+    .darken(0.2 + sfc(unstable ? Math.random() : seed + 1)() * 0.5)
     .hex()
   const initials = getInitials(name, singleLetter)
 
@@ -41,6 +45,11 @@ const AvatarLetter: React.FC<AvatarLetterProps> = (props) => {
       }
     )
   }, [loader, fontUrl])
+
+  // Needed for SSR to work
+  React.useEffect(() => {
+    setColor(getRandomColor(seed, colors, colors.length))
+  }, [seed, colors])
 
   const generatePath = (letters: string) => {
     if (!loader) {

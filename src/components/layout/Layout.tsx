@@ -11,7 +11,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className={clsx('flex min-h-screen flex-col')}>
       <Header />
-      <div className={clsx('h-full flex-1')}>{children}</div>
+      <div className={clsx('flex h-full flex-1 flex-col')}>{children}</div>
       <Footer />
     </div>
   )

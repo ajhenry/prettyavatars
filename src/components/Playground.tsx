@@ -7,14 +7,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Popover } from '@headlessui/react'
 import clsx from 'clsx'
 import palettes from 'nice-color-palettes'
-import { AvatarProps } from 'pretty-avatars'
+import { Variant } from 'pretty-avatars'
 import { useState } from 'react'
 import { SketchPicker } from 'react-color'
 import useDarkMode from 'use-dark-mode'
 
 import { AvatarBlock } from '@/components/Avatar'
 
-const variants: AvatarProps['variant'][] = [
+const variants: Variant[] = [
   'letter',
   'pixel',
   'bauhaus',
