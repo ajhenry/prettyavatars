@@ -8,11 +8,12 @@ import { Popover } from '@headlessui/react'
 import clsx from 'clsx'
 import palettes from 'nice-color-palettes'
 // import { Variant } from 'pretty-avatars'
-import { useState } from 'react'
+import { PropsWithChildren, useState } from 'react'
 import { SketchPicker } from 'react-color'
 import useDarkMode from 'use-dark-mode'
 
 import { AvatarBlock } from '@/components/Avatar'
+import { useBreakpoint } from '@/hooks/useTailwind'
 import { Variant } from './pretty-avatars/src'
 
 const variants: Variant[] = [
@@ -30,14 +31,33 @@ const randomizeColors = () => {
   return palettes[Math.floor(Math.random() * palettes.length)]
 }
 
+const Holder: React.FC<PropsWithChildren> = ({ children }) => {
+  const { value: isDarkMode } = useDarkMode(true)
+
+  return (
+    <div
+      className={clsx(
+        'mx-5 my-2 w-fit space-x-1 rounded p-1 sm:m-0 sm:w-auto',
+        isDarkMode ? 'bg-dark-paper' : 'bg-light-paper',
+        'inline-flex flex-row items-center',
+        'border border-primary-600'
+      )}
+    >
+      {children}
+    </div>
+  )
+}
+
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface PlaygroundProps {}
 
 export const Playground: React.FC<PlaygroundProps> = () => {
   const { value: isDarkMode } = useDarkMode(true)
+  const isNonMobile = useBreakpoint('sm')
   const [size, setSize] = useState(100)
   const [colors, setColors] = useState<string[]>(randomizeColors())
   const [square, setSquare] = useState(false)
+  const iconSize = isNonMobile ? 'lg' : '2xl'
 
   const updateColors = (color: string, position: number, colors: string[]) => {
     const newColors = [...colors]
@@ -50,81 +70,65 @@ export const Playground: React.FC<PlaygroundProps> = () => {
       <div>
         <h2 className='text-6xl font-extrabold'>Playground</h2>
       </div>
-      <div className='sticky mt-4 flex flex-row justify-center space-x-4'>
-        <div
-          className={clsx(
-            'inline-block w-auto space-x-2 rounded p-1',
-            isDarkMode ? 'bg-dark-paper' : 'bg-light-paper'
-          )}
-        >
+      <div className='mt-4 flex flex-wrap justify-center sm:flex-row sm:flex-nowrap sm:space-x-4'>
+        <Holder>
           <button
             onClick={() => setSquare(false)}
             className={clsx(
               !square ? 'bg-white text-black' : 'bg-transparent',
-              'h-8 w-8 rounded',
+              'h-12 w-12 rounded sm:h-8 sm:w-8',
               'transition-all duration-200 ease-in-out'
             )}
           >
-            <FontAwesomeIcon icon={faCircle} size='lg' />
+            <FontAwesomeIcon icon={faCircle} size={iconSize} />
           </button>
           <button
             onClick={() => setSquare(true)}
             className={clsx(
               square ? 'bg-white text-black' : 'bg-transparent',
-              'h-8 w-8 rounded',
+              'h-12 w-12 rounded sm:h-8 sm:w-8',
               'transition-all duration-200 ease-in-out'
             )}
           >
-            <FontAwesomeIcon icon={faSquare} size='lg' />
+            <FontAwesomeIcon icon={faSquare} size={iconSize} />
           </button>
-        </div>
+        </Holder>
 
-        <div
-          className={clsx(
-            'inline-block w-auto space-x-2 rounded p-1',
-            isDarkMode ? 'bg-dark-paper' : 'bg-light-paper'
-          )}
-        >
+        <Holder>
           <button
             onClick={() => setSize(60)}
             className={clsx(
               size === 60 ? 'bg-white text-black' : 'bg-transparent',
-              'h-8 w-8 rounded',
+              'h-12 w-12 rounded sm:h-8 sm:w-8',
               'transition-all duration-200 ease-in-out'
             )}
           >
-            <FontAwesomeIcon icon={faCircle} size='xs' />
+            <FontAwesomeIcon icon={faCircle} size={isNonMobile ? 'xs' : 'lg'} />
           </button>
           <button
             onClick={() => setSize(100)}
             className={clsx(
               size === 100 ? 'bg-white text-black' : 'bg-transparent',
-              'h-8 w-8 rounded',
+              'h-12 w-12 rounded sm:h-8 sm:w-8',
               'transition-all duration-200 ease-in-out'
             )}
           >
-            <FontAwesomeIcon icon={faCircle} size='lg' />
+            <FontAwesomeIcon icon={faCircle} size={isNonMobile ? 'xl' : '2x'} />
           </button>
           <button
             onClick={() => setSize(140)}
             className={clsx(
               size === 140 ? 'bg-white text-black' : 'bg-transparent',
-              'h-8 w-8 rounded',
+              'h-12 w-12 rounded sm:h-8 sm:w-8',
               'transition-all duration-200 ease-in-out'
             )}
           >
-            <FontAwesomeIcon icon={faCircle} size='xl' />
+            <FontAwesomeIcon icon={faCircle} size={isNonMobile ? 'xl' : '3x'} />
           </button>
-        </div>
-        <div
-          className={clsx(
-            'w-auto space-x-1 rounded p-1',
-            isDarkMode ? 'bg-dark-paper' : 'bg-light-paper',
-            'inline-flex flex-row items-center'
-          )}
-        >
+        </Holder>
+        <Holder>
           {colors.map((color, i) => (
-            <Popover key={color} className={clsx('h-8 w-8')}>
+            <Popover key={color} className={clsx('h-12 w-12 sm:h-8 sm:w-8')}>
               <Popover.Button
                 onClick={() => setSquare(false)}
                 className={clsx(
@@ -150,19 +154,19 @@ export const Playground: React.FC<PlaygroundProps> = () => {
           <button
             onClick={() => setColors(randomizeColors())}
             className={clsx(
-              'h-8 w-8 rounded',
+              'h-12 w-12 rounded sm:h-8 sm:w-8',
               'transition-all duration-200 ease-in-out'
             )}
           >
-            <FontAwesomeIcon icon={faRefresh} size='lg' />
+            <FontAwesomeIcon icon={faRefresh} size={iconSize} />
           </button>
-        </div>
+        </Holder>
       </div>
       {variants.map((variant) => (
         <div className='mt-8' key={variant}>
           <h3 className='text-left text-3xl'>{variant}</h3>
           <div className={clsx('mt-4 flex flex-row flex-wrap justify-around')}>
-            {Array.from({ length: 14 }).map((_, i) => (
+            {Array.from({ length: isNonMobile ? 14 : 6 }).map((_, i) => (
               <AvatarBlock
                 key={i}
                 variant={variant}

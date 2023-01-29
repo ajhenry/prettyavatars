@@ -34,7 +34,12 @@ export default function HomePage() {
         <div className='layout flex flex-col items-center justify-center text-center'>
           <section className='flex min-h-screen flex-col items-center justify-center'>
             <div className='flex flex-col items-center'>
-              <h1 className='heading-1 w-120 mt-4 p-4 text-left text-8xl font-extrabold'>
+              <h1
+                className={clsx(
+                  'heading-1 w-120 text-center font-extrabold',
+                  'text-8xl'
+                )}
+              >
                 <span
                   className={clsx(
                     'bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text font-black text-transparent'
@@ -44,7 +49,7 @@ export default function HomePage() {
                 </span>
               </h1>
             </div>
-            <p className='mt-8 w-3/4 text-xl'>
+            <p className='mt-8 text-xl sm:w-3/4'>
               A collection of pretty avatars for your next project. All avatars
               are SVG-based and are generated based on the name and color
               palette you provide.
@@ -52,7 +57,7 @@ export default function HomePage() {
             <div className='mt-16 w-full max-w-xl px-2 sm:px-0'>
               <h2 className='text-left'>From the CDN</h2>
               <div className='mt-2'>
-                <CopyButton value='https://prettyavatars.com/marble/120' />
+                <CopyButton value='https://prettyavatars.com/api/letter/120' />
               </div>
               <div className='mt-1 text-left text-sm'>
                 Avatars served from the CDN are free for{' '}
