@@ -27,10 +27,7 @@
     "demo": "node scripts/demo.js",
     "test": "node scripts/test.js"
   },
-  "files": [
-    "build/*",
-    "index.d.ts"
-  ],
+  "files": ["build/*", "index.d.ts"],
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "7.6.0",
@@ -100,11 +97,7 @@
     "extends": "react-app"
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
+    "production": [">0.2%", "not dead", "not op_mini all"],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
@@ -112,16 +105,9 @@
     ]
   },
   "jest": {
-    "roots": [
-      "<rootDir>/src"
-    ],
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx,ts,tsx}",
-      "!src/**/*.d.ts"
-    ],
-    "setupFiles": [
-      "react-app-polyfill/jsdom"
-    ],
+    "roots": ["<rootDir>/src"],
+    "collectCoverageFrom": ["src/**/*.{js,jsx,ts,tsx}", "!src/**/*.d.ts"],
+    "setupFiles": ["react-app-polyfill/jsdom"],
     "setupFilesAfterEnv": [],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
@@ -160,9 +146,7 @@
     ]
   },
   "babel": {
-    "presets": [
-      "react-app"
-    ]
+    "presets": ["react-app"]
   },
   "dependencies": {
     "color-contrast-checker": "^2.1.0",

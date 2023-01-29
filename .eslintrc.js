@@ -37,10 +37,10 @@ module.exports = {
         argsIgnorePattern: '^_',
       },
     ],
-    //#endregion  //*======== Unused Import ===========
+    '@typescript-eslint/no-empty-interface': ['off'],
   },
   globals: {
     React: true,
     JSX: true,
   },
-};
+}

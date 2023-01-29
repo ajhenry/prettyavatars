@@ -1,10 +1,11 @@
-import Avatar, { AvatarProps } from 'pretty-avatars'
+// import Avatar, { AvatarProps } from 'pretty-avatars'
+import Avatar, { Variant } from '@/components/pretty-avatars/src'
 import { useState } from 'react'
 
 import { generateName } from '@/lib/fake'
 
 interface AvatarBlockProps {
-  variant?: AvatarProps['variant']
+  variant?: Variant
   colors?: string[]
   size?: number
   square?: boolean

@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
+import Avatar, { Variant } from '@/components/pretty-avatars/src'
+import { redis } from '@/lib/redis'
 import { Ratelimit } from '@upstash/ratelimit'
-import { Redis } from '@upstash/redis'
 import Color from 'color'
 import { NextApiHandler } from 'next'
-import Avatar from 'pretty-avatars'
+// import Avatar from 'pretty-avatars'
 import { renderToString } from 'react-dom/server'
 import requestIP from 'request-ip'
 
@@ -31,12 +32,6 @@ const parseRequest = (url: string) => {
   }
 }
 
-// Redis client
-const redis = new Redis({
-  url: process.env.UPSTASH_REDIS_REST_URL!,
-  token: process.env.UPSTASH_REDIS_REST_TOKEN!,
-})
-
 // Create a new ratelimiter, that allows 5 requests per 5 seconds
 const ratelimit = new Ratelimit({
   redis: redis,
@@ -62,7 +57,12 @@ const handler: NextApiHandler = async (req, res) => {
   }
   const { variant, size, name, colors } = parseRequest(req.url ?? '')
   const rendered = renderToString(
-    <Avatar variant={variant as any} size={size} name={name} colors={colors} />
+    <Avatar
+      variant={variant as Variant}
+      size={size}
+      name={name}
+      colors={colors}
+    />
   )
   const imageBuffer = Buffer.from(rendered, 'utf-8')
   res.setHeader('Content-Type', 'image/svg+xml')

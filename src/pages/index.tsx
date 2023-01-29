@@ -28,7 +28,7 @@ export default function HomePage() {
 
   return (
     <Layout>
-      <Seo templateTitle='Home' />
+      <Seo />
 
       <main className='h-full'>
         <div className='layout flex flex-col items-center justify-center text-center'>

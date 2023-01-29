@@ -17,7 +17,7 @@ const Login: FC<LoginProps> = () => {
   const [googleIsLoading, setGoogleIsLoading] = useState(false)
   const { value: isDarkMode } = useDarkMode(true)
   const router = useRouter()
-  const { error } = router.query
+  const { error: _ } = router.query
 
   const handleGoogleSignIn = async () => {
     setGoogleIsLoading(true)

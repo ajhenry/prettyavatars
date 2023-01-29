@@ -1,6 +1,6 @@
-import admin from 'firebase-admin';
+import admin from 'firebase-admin'
 
-import serviceAccount from './serviceAccount.json';
+import serviceAccount from './serviceAccount.json'
 
 if (!admin.apps.length) {
   try {
@@ -8,9 +8,10 @@ if (!admin.apps.length) {
       credential: admin.credential.cert(
         serviceAccount as unknown as admin.ServiceAccount
       ),
-    });
+    })
   } catch (error) {
-    console.log('Firebase admin initialization error', (error as Error).stack);
+    // eslint-disable-next-line no-console
+    console.log('Firebase admin initialization error', (error as Error).stack)
   }
 }
-export default admin.firestore();
+export default admin.firestore()

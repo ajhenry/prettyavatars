@@ -7,8 +7,6 @@ import { AvatarProps } from './avatar'
 
 const SIZE = 80
 
-const isSSR = typeof window === 'undefined'
-
 export interface AvatarLetterProps extends AvatarProps {
   singleLetter?: boolean
   fontUrl?: string
@@ -35,6 +33,7 @@ const AvatarLetter: React.FC<AvatarLetterProps> = (props) => {
       function (err, textToSVG) {
         if (!textToSVG) {
           if (window === undefined) {
+            // eslint-disable-next-line no-console
             console.log(err)
           }
           return

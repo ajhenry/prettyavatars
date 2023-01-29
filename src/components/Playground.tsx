@@ -7,12 +7,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Popover } from '@headlessui/react'
 import clsx from 'clsx'
 import palettes from 'nice-color-palettes'
-import { Variant } from 'pretty-avatars'
+// import { Variant } from 'pretty-avatars'
 import { useState } from 'react'
 import { SketchPicker } from 'react-color'
 import useDarkMode from 'use-dark-mode'
 
 import { AvatarBlock } from '@/components/Avatar'
+import { Variant } from './pretty-avatars/src'
 
 const variants: Variant[] = [
   'letter',
@@ -34,7 +35,7 @@ interface PlaygroundProps {}
 
 export const Playground: React.FC<PlaygroundProps> = () => {
   const { value: isDarkMode } = useDarkMode(true)
-  const [size, setSize] = useState(80)
+  const [size, setSize] = useState(100)
   const [colors, setColors] = useState<string[]>(randomizeColors())
   const [square, setSquare] = useState(false)
 
@@ -85,9 +86,9 @@ export const Playground: React.FC<PlaygroundProps> = () => {
           )}
         >
           <button
-            onClick={() => setSize(40)}
+            onClick={() => setSize(60)}
             className={clsx(
-              size === 40 ? 'bg-white text-black' : 'bg-transparent',
+              size === 60 ? 'bg-white text-black' : 'bg-transparent',
               'h-8 w-8 rounded',
               'transition-all duration-200 ease-in-out'
             )}
@@ -95,9 +96,9 @@ export const Playground: React.FC<PlaygroundProps> = () => {
             <FontAwesomeIcon icon={faCircle} size='xs' />
           </button>
           <button
-            onClick={() => setSize(80)}
+            onClick={() => setSize(100)}
             className={clsx(
-              size === 80 ? 'bg-white text-black' : 'bg-transparent',
+              size === 100 ? 'bg-white text-black' : 'bg-transparent',
               'h-8 w-8 rounded',
               'transition-all duration-200 ease-in-out'
             )}
@@ -105,9 +106,9 @@ export const Playground: React.FC<PlaygroundProps> = () => {
             <FontAwesomeIcon icon={faCircle} size='lg' />
           </button>
           <button
-            onClick={() => setSize(120)}
+            onClick={() => setSize(140)}
             className={clsx(
-              size === 120 ? 'bg-white text-black' : 'bg-transparent',
+              size === 140 ? 'bg-white text-black' : 'bg-transparent',
               'h-8 w-8 rounded',
               'transition-all duration-200 ease-in-out'
             )}

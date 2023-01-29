@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { FirestoreAdapter } from '@next-auth/firebase-adapter'
+import { redis } from '@/lib/redis'
+import { UpstashRedisAdapter } from '@next-auth/upstash-redis-adapter'
 import NextAuth, { AuthOptions } from 'next-auth'
 import GithubProvider from 'next-auth/providers/github'
+import GoogleAuthProvider from 'next-auth/providers/google'
 
 export const authOptions: AuthOptions = {
   secret: process.env.NEXT_AUTH_SECRET!,
@@ -11,19 +13,12 @@ export const authOptions: AuthOptions = {
       clientId: process.env.GITHUB_CLIENT_ID!,
       clientSecret: process.env.GITHUB_CLIENT_SECRET!,
     }),
-    // ...add more providers here
+    GoogleAuthProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    }),
   ],
-  adapter: FirestoreAdapter({
-    apiKey: process.env.FIREBASE_API_KEY,
-    appId: process.env.FIREBASE_APP_ID,
-    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-    databaseURL: process.env.FIREBASE_DATABASE_URL,
-    projectId: process.env.FIREBASE_PROJECT_ID,
-    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-    // Optional emulator config (see below for options)
-    emulator: {},
-  }),
+  adapter: UpstashRedisAdapter(redis),
   pages: {
     signIn: '/login',
     error: '/login', // Error code passed in query string as ?error=
