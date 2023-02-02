@@ -28,17 +28,11 @@
 }
 
 /* Values for light/dark mode */
-
-/* body.light-mode {
-  background-color: #fff;
-  color: #333;
-  transition: background-color 0.1s ease;
-}
-body.dark-mode {
+body {
   background-color: var(--color-primary-900);
   color: var(--color-primary-300);
   transition: background-color 0.1s ease;
-} */
+}
 
 @layer base {
   /* inter var - latin */

@@ -12,7 +12,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <div
       className={clsx(
         'flex min-h-screen flex-col',
-        isDarkMode ? 'bg-dark-bg text-dark-text' : 'bg-light-bg text-light-text'
+        isDarkMode
+          ? 'bg-dark-bg text-dark-text'
+          : 'bg-light-bg text-light-text',
+        'transition duration-150 ease-in-out'
       )}
     >
       <Header />
