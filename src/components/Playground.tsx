@@ -8,9 +8,9 @@ import { Popover } from '@headlessui/react'
 import clsx from 'clsx'
 import palettes from 'nice-color-palettes'
 // import { Variant } from 'pretty-avatars'
+import { useDarkMode } from 'next-dark-mode'
 import { PropsWithChildren, useState } from 'react'
 import { SketchPicker } from 'react-color'
-import useDarkMode from 'use-dark-mode'
 
 import { AvatarBlock } from '@/components/Avatar'
 import { useBreakpoint } from '@/hooks/useTailwind'
@@ -32,7 +32,7 @@ const randomizeColors = () => {
 }
 
 const Holder: React.FC<PropsWithChildren> = ({ children }) => {
-  const { value: isDarkMode } = useDarkMode(true)
+  const { darkModeActive: isDarkMode } = useDarkMode()
 
   return (
     <div
@@ -52,12 +52,12 @@ const Holder: React.FC<PropsWithChildren> = ({ children }) => {
 interface PlaygroundProps {}
 
 export const Playground: React.FC<PlaygroundProps> = () => {
-  const { value: isDarkMode } = useDarkMode(true)
-  const isNonMobile = useBreakpoint('sm')
+  const { darkModeActive: isDarkMode } = useDarkMode()
+  const isDesktop = useBreakpoint('sm', true)
   const [size, setSize] = useState(100)
   const [colors, setColors] = useState<string[]>(randomizeColors())
   const [square, setSquare] = useState(false)
-  const iconSize = isNonMobile ? 'lg' : '2xl'
+  const iconSize = isDesktop ? 'lg' : '2xl'
 
   const updateColors = (color: string, position: number, colors: string[]) => {
     const newColors = [...colors]
@@ -103,7 +103,7 @@ export const Playground: React.FC<PlaygroundProps> = () => {
               'transition-all duration-200 ease-in-out'
             )}
           >
-            <FontAwesomeIcon icon={faCircle} size={isNonMobile ? 'xs' : 'lg'} />
+            <FontAwesomeIcon icon={faCircle} size={isDesktop ? 'xs' : 'lg'} />
           </button>
           <button
             onClick={() => setSize(100)}
@@ -113,7 +113,7 @@ export const Playground: React.FC<PlaygroundProps> = () => {
               'transition-all duration-200 ease-in-out'
             )}
           >
-            <FontAwesomeIcon icon={faCircle} size={isNonMobile ? 'lg' : '2x'} />
+            <FontAwesomeIcon icon={faCircle} size={isDesktop ? 'lg' : '2x'} />
           </button>
           <button
             onClick={() => setSize(140)}
@@ -123,7 +123,7 @@ export const Playground: React.FC<PlaygroundProps> = () => {
               'transition-all duration-200 ease-in-out'
             )}
           >
-            <FontAwesomeIcon icon={faCircle} size={isNonMobile ? 'xl' : '3x'} />
+            <FontAwesomeIcon icon={faCircle} size={isDesktop ? 'xl' : '3x'} />
           </button>
         </Holder>
         <Holder>
@@ -166,7 +166,7 @@ export const Playground: React.FC<PlaygroundProps> = () => {
         <div className='mt-8' key={variant}>
           <h3 className='text-left text-3xl'>{variant}</h3>
           <div className={clsx('mt-4 flex flex-row flex-wrap justify-around')}>
-            {Array.from({ length: isNonMobile ? 14 : 6 }).map((_, i) => (
+            {Array.from({ length: isDesktop ? 14 : 6 }).map((_, i) => (
               <AvatarBlock
                 key={i}
                 variant={variant}

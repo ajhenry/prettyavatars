@@ -1,6 +1,6 @@
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import useDarkMode from 'use-dark-mode'
+import { useDarkMode } from 'next-dark-mode'
 
 import UnstyledLink from '@/components/links/UnstyledLink'
 
@@ -10,7 +10,11 @@ const links = [
 ]
 
 const Header = () => {
-  const { value, toggle } = useDarkMode()
+  const {
+    darkModeActive: isDarkMode,
+    switchToLightMode,
+    switchToDarkMode,
+  } = useDarkMode()
 
   return (
     <header className='top-0 z-10 w-full'>
@@ -31,8 +35,13 @@ const Header = () => {
               </li>
             ))}
           </ul>
-          <button onClick={() => toggle()} className='w-12'>
-            <FontAwesomeIcon icon={value ? faSun : faMoon} size='lg' />
+          <button
+            onClick={() =>
+              isDarkMode ? switchToLightMode() : switchToDarkMode()
+            }
+            className='w-12'
+          >
+            <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} size='lg' />
           </button>
         </nav>
       </div>

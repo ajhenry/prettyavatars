@@ -1,8 +1,8 @@
 import { faCheck, faCopy } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import clsx from 'clsx'
+import { useDarkMode } from 'next-dark-mode'
 import { FC, useEffect, useState } from 'react'
-import useDarkMode from 'use-dark-mode'
 import { useCopyToClipboard } from 'usehooks-ts'
 import Button from './Button'
 
@@ -13,7 +13,7 @@ interface CopyButtonProps {
 export const CopyButton: FC<CopyButtonProps> = ({ value }) => {
   const [_, copy] = useCopyToClipboard()
   const [clicked, setClicked] = useState(false)
-  const { value: isDarkMode } = useDarkMode(true)
+  const { darkModeActive: isDarkMode } = useDarkMode()
 
   // clear the clicked value after 5 seconds
   useEffect(() => {

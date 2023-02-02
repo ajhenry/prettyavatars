@@ -1,5 +1,6 @@
 import { config } from '@fortawesome/fontawesome-svg-core'
 import { SessionProvider } from 'next-auth/react'
+import withDarkMode from 'next-dark-mode'
 import { AppProps } from 'next/app'
 
 import '@fortawesome/fontawesome-svg-core/styles.css'
@@ -18,4 +19,4 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   )
 }
 
-export default trpc.withTRPC(MyApp)
+export default trpc.withTRPC(withDarkMode(MyApp))

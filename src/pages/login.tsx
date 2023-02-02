@@ -4,10 +4,10 @@ import clsx from 'clsx'
 import { GetServerSidePropsContext } from 'next'
 import { getServerSession } from 'next-auth'
 import { signIn } from 'next-auth/react'
+import { useDarkMode } from 'next-dark-mode'
 import { useRouter } from 'next/router'
 import { FC, useState } from 'react'
 import { ImGithub, ImGoogle } from 'react-icons/im'
-import useDarkMode from 'use-dark-mode'
 import { authOptions } from './api/auth/[...nextauth]'
 
 interface LoginProps {}
@@ -15,7 +15,7 @@ interface LoginProps {}
 const Login: FC<LoginProps> = () => {
   const [githubIsLoading, setGithubIsLoading] = useState(false)
   const [googleIsLoading, setGoogleIsLoading] = useState(false)
-  const { value: isDarkMode } = useDarkMode(true)
+  const { darkModeActive: isDarkMode } = useDarkMode()
   const router = useRouter()
   const { error: _ } = router.query
 
