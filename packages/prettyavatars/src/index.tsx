@@ -8,7 +8,4 @@ export type { AvatarPixelProps } from './components/pixel'
 export type { AvatarRingProps } from './components/ring'
 export type { AvatarSunsetProps } from './components/sunset'
 
-// export type { AvatarGeometricProps } from './components/geometric'
-// export type { AvatarAbstractProps } from './components/abstract'
-
 export default Avatar

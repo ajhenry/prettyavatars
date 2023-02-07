@@ -5,10 +5,6 @@
   "version": "0.0.3",
   "main": "build/index.js",
   "types": "build/index.d.ts",
-  "exports": {
-    ".": "./build/index.js",
-    "./react": "./build/components/"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ajhenry/prettyavatars"

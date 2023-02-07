@@ -8692,10 +8692,10 @@ pretty-format@^3.8.0:
   resolved "https://registry.yarnpkg.com/pretty-format/-/pretty-format-3.8.0.tgz#bfbed56d5e9a776645f4b1ff7aa1a3ac4fa3c385"
   integrity sha512-WuxUnVtlWL1OfZFQFuqvnvs6MiAGk9UNsBostyBOB0Is9wb5uRESevA6rnl/rkksXaGX3GzZhPup5d6Vp1nFew==
 
-prettyavatars@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/prettyavatars/-/prettyavatars-0.0.2.tgz#73a57d813b0229a5c65d305b928cd67c8c2d5d61"
-  integrity sha512-p7xxdQaNq/hvavuUlZs3k2kkLQqvS0JdxePRqlmMfI+LVjI+ZZ3SClDcppsurZUldf2JG6WvGTaF8go6wD2HMQ==
+prettyavatars@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/prettyavatars/-/prettyavatars-0.0.3.tgz#c73a41c6954b60c851f84d5671b275d9c2233094"
+  integrity sha512-pflN+A1oUNxERMqf2ahg3vJiOeqa4jHADyKIEsijVO8wERET5n9PzYKjx0eFH6F1uJO/dir5pfX1MoetKk3F1w==
   dependencies:
     react-html-parser "^2.0.2"
     text-to-svg "^3.1.5"
