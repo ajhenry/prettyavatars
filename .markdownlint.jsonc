@@ -1,0 +1,8 @@
+{
+  "default": true,
+  "MD007": { "indent": 4 },
+  "MD013": false,
+  "MD033": { "allowed_elements": ["code", "kbd", "pre", "sub", "div", "img"] },
+  "MD041": false,
+  "no-hard-tabs": false
+}
