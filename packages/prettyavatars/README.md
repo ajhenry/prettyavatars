@@ -4,7 +4,7 @@
 
 A collection of pretty default avatars for your next project
 
-<!-- ![boring avatars preview](packages/prettyavatars/public/preview.png) -->
+<!-- ![pretty avatars preview](packages/prettyavatars/public/preview.png) -->
 
 </div>
 
