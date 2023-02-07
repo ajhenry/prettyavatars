@@ -2,7 +2,7 @@
   "name": "prettyavatars",
   "description": "A collection of pretty default avatars to use in your next project",
   "homepage": "https://prettyavatars.com/",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "repository": {
