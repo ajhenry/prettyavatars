@@ -1,3 +1,5 @@
+import { AvatarBlock } from '@/components/Avatar'
+import { useBreakpoint } from '@/hooks/useTailwind'
 import {
   faCircle,
   faRefresh,
@@ -6,15 +8,11 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Popover } from '@headlessui/react'
 import clsx from 'clsx'
-import palettes from 'nice-color-palettes'
-// import { Variant } from 'pretty-avatars'
 import { useDarkMode } from 'next-dark-mode'
+import palettes from 'nice-color-palettes'
+import { Variant } from 'prettyavatars'
 import { PropsWithChildren, useState } from 'react'
 import { SketchPicker } from 'react-color'
-
-import { AvatarBlock } from '@/components/Avatar'
-import { useBreakpoint } from '@/hooks/useTailwind'
-import { Variant } from './pretty-avatars/src'
 
 const variants: Variant[] = [
   'letter',
