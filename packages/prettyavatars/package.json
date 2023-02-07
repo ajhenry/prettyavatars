@@ -22,7 +22,8 @@
   ],
   "scripts": {
     "dev": "tsc --watch",
-    "build": "tsc -b ."
+    "build": "tsc -b .",
+    "prepublish": "npm run build"
   },
   "files": [
     "build/*",
