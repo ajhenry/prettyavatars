@@ -77,11 +77,11 @@ export const getContrast = (hexcolor: string) => {
   return yiq >= 128 ? '#000000' : '#FFFFFF'
 }
 
-export const getInitials = (name: string, singleLetter = false) => {
+export const getInitials = (name: string) => {
   const names = name.trim().split(' ')
   let initials = names[0].substring(0, 1).toUpperCase()
 
-  if (names.length > 1 && !singleLetter) {
+  if (names.length > 1) {
     initials += names[names.length - 1].substring(0, 1).toUpperCase()
   }
 

@@ -2,8 +2,10 @@ import { AvatarBlock } from '@/components/Avatar'
 import { useBreakpoint } from '@/hooks/useTailwind'
 import {
   faCircle,
+  faMoon,
   faRefresh,
   faSquare,
+  faSun,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Popover } from '@headlessui/react'
@@ -50,12 +52,16 @@ const Holder: React.FC<PropsWithChildren> = ({ children }) => {
 interface PlaygroundProps {}
 
 export const Playground: React.FC<PlaygroundProps> = () => {
-  const { darkModeActive: isDarkMode } = useDarkMode()
   const isDesktop = useBreakpoint('sm', true)
   const [size, setSize] = useState(100)
   const [colors, setColors] = useState<string[]>(randomizeColors())
   const [square, setSquare] = useState(false)
   const iconSize = isDesktop ? 'lg' : '2xl'
+  const {
+    darkModeActive: isDarkMode,
+    switchToLightMode,
+    switchToDarkMode,
+  } = useDarkMode()
 
   const updateColors = (color: string, position: number, colors: string[]) => {
     const newColors = [...colors]
@@ -69,6 +75,28 @@ export const Playground: React.FC<PlaygroundProps> = () => {
         <h2 className='text-6xl font-extrabold'>Playground</h2>
       </div>
       <div className='mt-4 flex flex-wrap justify-center sm:flex-row sm:flex-nowrap sm:space-x-4'>
+        <Holder>
+          <button
+            onClick={switchToLightMode}
+            className={clsx(
+              !isDarkMode ? 'bg-white text-black' : 'bg-transparent',
+              'h-12 w-12 rounded sm:h-8 sm:w-8',
+              'transition-all duration-200 ease-in-out'
+            )}
+          >
+            <FontAwesomeIcon icon={faSun} size={iconSize} />
+          </button>
+          <button
+            onClick={switchToDarkMode}
+            className={clsx(
+              isDarkMode ? 'bg-white text-black' : 'bg-transparent',
+              'h-12 w-12 rounded sm:h-8 sm:w-8',
+              'transition-all duration-200 ease-in-out'
+            )}
+          >
+            <FontAwesomeIcon icon={faMoon} size={iconSize} />
+          </button>
+        </Holder>
         <Holder>
           <button
             onClick={() => setSquare(false)}

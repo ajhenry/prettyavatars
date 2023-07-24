@@ -72,7 +72,6 @@ const getInterLetters = (letter: string, fill: string) => {
 }
 
 const AvatarLetter: React.FC<AvatarLetterProps> = (props) => {
-  console.log(props)
   const { name, colors, fontUrl, unstable } = props
   const [loader, setLoader] = React.useState<TextToSVG | null>(null)
   const [initials, setInitials] = React.useState<string>(getInitials(name))
@@ -80,7 +79,6 @@ const AvatarLetter: React.FC<AvatarLetterProps> = (props) => {
   const [color, setColor] = React.useState<string>(
     getRandomColor(seed, colors, colors.length)
   )
-
   const lightened = Color(color)
     .lighten(0.2 + sfc(unstable ? Math.random() : seed)() * 0.5)
     .hex()
@@ -116,22 +114,24 @@ const AvatarLetter: React.FC<AvatarLetterProps> = (props) => {
   }, [seed, colors])
 
   const generatePath = (letters: string) => {
-    return getInterLetters(letters, darkened)
+    if (!fontUrl) {
+      return getInterLetters(letters, darkened)
+    }
 
     // This is still a work in progress for dynamic fonts
-    // if (!loader) {
-    //   return
-    // }
+    if (!loader) {
+      return
+    }
 
-    // return loader.getPath(letters, {
-    //   x: SIZE / 2,
-    //   y: SIZE / 2,
-    //   anchor: 'center middle',
-    //   fontSize: letters.length === 2 ? SIZE - 48 : SIZE - 32,
-    //   attributes: {
-    //     fill: darkened,
-    //   },
-    // })
+    return loader.getPath(letters, {
+      x: SIZE / 2,
+      y: SIZE / 2,
+      anchor: 'center middle',
+      fontSize: letters.length === 2 ? SIZE - 48 : SIZE - 32,
+      attributes: {
+        fill: darkened,
+      },
+    })
   }
 
   const SQUARE_CONST = 0.05
@@ -174,18 +174,18 @@ const AvatarLetter: React.FC<AvatarLetterProps> = (props) => {
               10 * SCALE_CONSTANT
             }) scale(${SCALE_CONSTANT})`}
           >
-            {ReactHtmlParser(generatePath(initials.split('')[0]))}
+            {ReactHtmlParser(generatePath(initials.split('')[0])!)}
           </g>
           <g
             transform={`translate(${26 * SCALE_CONSTANT}, ${
               10 * SCALE_CONSTANT
             }) scale(${SCALE_CONSTANT})`}
           >
-            {ReactHtmlParser(generatePath(initials.split('')[1]))}
+            {ReactHtmlParser(generatePath(initials.split('')[1])!)}
           </g>
         </>
       ) : (
-        ReactHtmlParser(generatePath(initials))
+        ReactHtmlParser(generatePath(initials)!)
       )}
     </svg>
   )

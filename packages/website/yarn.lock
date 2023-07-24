@@ -8702,14 +8702,6 @@ pretty-format@^3.8.0:
   resolved "https://registry.yarnpkg.com/pretty-format/-/pretty-format-3.8.0.tgz#bfbed56d5e9a776645f4b1ff7aa1a3ac4fa3c385"
   integrity sha512-WuxUnVtlWL1OfZFQFuqvnvs6MiAGk9UNsBostyBOB0Is9wb5uRESevA6rnl/rkksXaGX3GzZhPup5d6Vp1nFew==
 
-prettyavatars@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/prettyavatars/-/prettyavatars-0.0.4.tgz#e39959bdc28f9901dc8538b4c414cf62cd470f8e"
-  integrity sha512-uL6XH1/mAaNV/EGfPVmK7AuWIouA/kc7C4wkitPdQUnXdU9vzA5rrb5pG8ZWshFUfVpWn/yXD9eEzWBlasJgTQ==
-  dependencies:
-    react-html-parser "^2.0.2"
-    text-to-svg "^3.1.5"
-
 prismjs@^1.8.4:
   version "1.29.0"
   resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.29.0.tgz#f113555a8fa9b57c35e637bba27509dcf802dd12"

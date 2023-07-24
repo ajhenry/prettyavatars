@@ -1,19 +1,26 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { redis } from '@/lib/redis'
-import { Ratelimit } from '@upstash/ratelimit'
+import { faker } from '@faker-js/faker'
 import Color from 'color'
 import { NextApiHandler } from 'next'
 import Avatar, { Variant } from 'prettyavatars'
 // import Avatar from 'pretty-avatars'
+import pallettes from 'nice-color-palettes'
+import queryString from 'query-string'
 import { renderToString } from 'react-dom/server'
 import requestIP from 'request-ip'
 
 // convert color code to hex
+// needs much much battle hardening
 const colorHex = (color: string) => {
-  if (color.startsWith('#')) return color
-  if (color.startsWith('rgb')) return Color(color).hex()
+  try {
+    if (color.startsWith('#')) return color
+    if (color.startsWith('rgb')) return Color(color).hex()
 
-  return Color(`#${color}`).hex()
+    return Color(`#${color}`).hex()
+  } catch (error) {
+    // Light blue :)
+    return '#90caf9'
+  }
 }
 
 // default color palette
@@ -21,40 +28,74 @@ const palette = ['#BF616A', '#D08770', '#EBCB8B', '#A3BE8C', '#B48EAD']
 
 // function that takes in the request url and returns
 // the following data: /api/[icon]/[size]/[name]/[colors]
+//
+// Also accepts the following query params:
+// - variant: circle | square | rounded
+// - size: number
+// - name: string
+// - colors: comma-separated list of colors
+//
+// And these additional query params for other avatars:
+// - random-all: boolean
+// - random-name: boolean
+// - random-colors: boolean
+// - seed: string
+
 const parseRequest = (url: string) => {
-  const parsed = url.split('/')
-  const [_, __, variant, size, name, colors] = parsed
+  // There's such a better way to do this, but oh well
+  // remove any q
+  const [urlWithoutQueryParams, queryParams] = url.split('?')
+  const parsed = urlWithoutQueryParams.split('/').map(decodeURIComponent)
+  // parse out query params
+  const query = queryString.parse(queryParams ?? '')
+
+  // Parse variant, size, and name
+  let variant = parsed[2] ?? query['variant'] ?? 'letter'
+  let name = parsed[4] ?? query['name'] ?? 'John Doe'
+  const size = Number(parsed[3] ?? query['size'] ?? 80)
+
+  // Parse colors
+  const colorString = parsed[5] ?? query['colors'] ?? palette.join(',')
+  let colors = colorString.split(',').map(colorHex)
+
+  // if random is true, generate a random avatar
+  if (query['random-all']) {
+    const variants: Variant[] = [
+      'letter',
+      'pixel',
+      'bauhaus',
+      'ring',
+      'beam',
+      'sunset',
+      'marble',
+    ]
+    variant = variants[Math.floor(Math.random() * variants.length)]
+    name = Math.random() > 0.5 ? faker.name.fullName() : faker.name.firstName()
+    colors = pallettes[Math.floor(Math.random() * pallettes.length)]
+  }
+
+  if (query['random-name']) {
+    name = Math.random() > 0.5 ? faker.name.fullName() : faker.name.firstName()
+  }
+
+  if (query['random-colors']) {
+    colors = pallettes[Math.floor(Math.random() * pallettes.length)]
+  }
+
   return {
-    variant: variant ?? 'circle',
-    size: size ? parseInt(size) : 80,
-    name: name ?? 'John Doe',
-    colors: colors ? colors.split(',').map(colorHex) : palette,
+    variant,
+    size,
+    name,
+    colors,
   }
 }
 
-// Create a new ratelimiter, that allows 5 requests per 5 seconds
-const ratelimit = new Ratelimit({
-  redis: redis,
-  limiter: Ratelimit.fixedWindow(5, '5 s'),
-})
-
 const handler: NextApiHandler = async (req, res) => {
-  // Use a constant string to limit all requests with a single ratelimit
-  // Or use a userID, apiKey or ip address for individual limits.
   const detectedIP = requestIP.getClientIp(req)
   const identifier = detectedIP ?? 'fallback'
-  const result = await ratelimit.limit(identifier)
-  res.setHeader('X-RateLimit-Limit', result.limit)
-  res.setHeader('X-RateLimit-Remaining', result.remaining)
-  res.setHeader('X-RateLimit-Reset', result.reset)
+  // eslint-disable-next-line no-console
+  console.log('identifier', identifier)
 
-  if (!result.success) {
-    res.status(429).json({
-      message: 'The request has been rate limited.',
-      rateLimitState: result,
-    })
-    return
-  }
   const { variant, size, name, colors } = parseRequest(req.url ?? '')
   const rendered = renderToString(
     <Avatar
