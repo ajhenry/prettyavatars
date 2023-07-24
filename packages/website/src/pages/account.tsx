@@ -1,8 +1,4 @@
-import { getServerSession } from 'next-auth/next'
-import { authOptions } from './api/auth/[...nextauth]'
-
 import Layout from '@/components/layout/Layout'
-import type { GetServerSidePropsContext } from 'next'
 
 interface User {
   name: string
@@ -39,25 +35,6 @@ const Account: React.FC<{ user: User }> = (props) => {
       </main>
     </Layout>
   )
-}
-
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const session = await getServerSession(context.req, context.res, authOptions)
-
-  if (!session) {
-    return {
-      redirect: {
-        destination: '/login',
-        permanent: false,
-      },
-    }
-  }
-
-  return {
-    props: {
-      user: session.user,
-    },
-  }
 }
 
 export default Account
