@@ -67,6 +67,7 @@ const AvatarLetter: React.FC<AvatarLetterProps> = (props) => {
   }
 
   const letters = generatePath(initials) ?? 'A'
+  const SQUARE_CONST = 0.05
 
   return (
     <svg
@@ -76,13 +77,28 @@ const AvatarLetter: React.FC<AvatarLetterProps> = (props) => {
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
     >
-      <circle cx={SIZE / 2} cy={SIZE / 2} r={SIZE / 2} fill={darkened} />
-      <circle
-        cx={SIZE / 2}
-        cy={SIZE / 2}
-        r={SIZE / 2 - SIZE * 0.05}
-        fill={lightened}
-      />
+      {props.square ? (
+        <>
+          <rect width={SIZE} height={SIZE} fill={darkened} />
+          <rect
+            width={SIZE * (1 - SQUARE_CONST * 2)}
+            height={SIZE * (1 - SQUARE_CONST * 2)}
+            fill={lightened}
+            x={SIZE - SIZE * (1 - SQUARE_CONST)}
+            y={SIZE - SIZE * (1 - SQUARE_CONST)}
+          />
+        </>
+      ) : (
+        <>
+          <circle cx={SIZE / 2} cy={SIZE / 2} r={SIZE / 2} fill={darkened} />
+          <circle
+            cx={SIZE / 2}
+            cy={SIZE / 2}
+            r={SIZE / 2 - SIZE * 0.05}
+            fill={lightened}
+          />
+        </>
+      )}
       {ReactHtmlParser(letters)}
     </svg>
   )
