@@ -9,8 +9,6 @@ config.autoAddCss = false
 import '@/styles/colors.css'
 import '@/styles/globals.css'
 
-import { trpc } from '../utils/trpc'
-
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <SessionProvider session={session}>
@@ -19,6 +17,6 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   )
 }
 
-export default withDarkMode(trpc.withTRPC(MyApp), {
+export default withDarkMode(MyApp, {
   defaultMode: MODE.DARK,
 })

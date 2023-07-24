@@ -3,7 +3,6 @@ import Layout from '@/components/layout/Layout'
 import UnderlineLink from '@/components/links/UnderlineLink'
 
 import Seo from '@/components/Seo'
-import { trpc } from '@/utils/trpc'
 import clsx from 'clsx'
 import dynamic from 'next/dynamic'
 
@@ -20,12 +19,6 @@ const Playground = dynamic(
 )
 
 export default function HomePage() {
-  const data = trpc.post.create.useMutation()
-
-  if (!data) {
-    return <div>Loading...</div>
-  }
-
   return (
     <Layout>
       <Seo />
