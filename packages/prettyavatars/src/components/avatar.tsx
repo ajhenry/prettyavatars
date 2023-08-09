@@ -4,6 +4,7 @@ import AvatarBeam from './beam'
 import AvatarLetter from './letter'
 import AvatarMarble from './marble'
 import AvatarPixel from './pixel'
+import AvatarPixelArt from './pixel-art'
 import AvatarRing from './ring'
 import AvatarSunset from './sunset'
 
@@ -15,7 +16,10 @@ const variants = [
   'beam',
   'sunset',
   'marble',
+  'letter-plain',
+  'pixel-art',
 ] as const
+
 const deprecatedVariants: Record<string, string> = {
   geometric: 'beam',
   abstract: 'bauhaus',
@@ -64,6 +68,8 @@ const Avatar = ({
     beam: <AvatarBeam {...avatarProps} />,
     sunset: <AvatarSunset {...avatarProps} />,
     marble: <AvatarMarble {...avatarProps} />,
+    'letter-plain': <AvatarLetter {...avatarProps} plain />,
+    'pixel-art': <AvatarPixelArt {...avatarProps} />,
   }
   return avatars[checkedVariant()]
 }
