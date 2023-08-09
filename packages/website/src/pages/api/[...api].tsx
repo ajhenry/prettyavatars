@@ -30,7 +30,7 @@ const palette = ['#BF616A', '#D08770', '#EBCB8B', '#A3BE8C', '#B48EAD']
 // the following data: /api/[icon]/[size]/[name]/[colors]
 //
 // Also accepts the following query params:
-// - variant: circle | square | rounded
+// - variant: string
 // - size: number
 // - name: string
 // - colors: comma-separated list of colors
@@ -68,6 +68,8 @@ const parseRequest = (url: string) => {
       'beam',
       'sunset',
       'marble',
+      'letter-plain',
+      'pixel-art',
     ]
     variant = variants[Math.floor(Math.random() * variants.length)]
     name = Math.random() > 0.5 ? faker.name.fullName() : faker.name.firstName()
