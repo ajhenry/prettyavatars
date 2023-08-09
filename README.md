@@ -57,18 +57,6 @@ import Avatar from 'prettyavatars'
   <img src="https://prettyavatars.com/api/letter-plain/100?random-name=true"/>
 </div>
 
-<!-- prettier-ignore -->
-```jsx
-import { LetterAvatar } from 'prettyavatars'
-
-<Avatar
-  variant='letter'
-  name='John Doe'
-  size={100}
-  colors={['#92A1C6', '#146A7C', '#F0AB3D', '#C271B4', '#C20D90']}
-/>
-```
-
 #### CDN
 
 ```url
