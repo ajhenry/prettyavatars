@@ -300,10 +300,6 @@ Or all together:
 
 ```url
 https://prettyavatars.com/api/{VARIENT}/{SIZE}?name={NAME}&colors={COLORS}
-#### React
-
-
-
 ```
 
 ## Installation
