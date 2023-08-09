@@ -7,7 +7,6 @@
 
 <img src="https://prettyavatars.com/api/letter/160?random-all=true"/>
 <br/>
-<br/>
 
 # prettyavatars
 
