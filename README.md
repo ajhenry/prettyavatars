@@ -27,11 +27,9 @@ _Also available as a standalone [React package](https://www.npmjs.com/package/pr
 
 ### letter
 
-<center>
+<div align="center">
   <img src="https://prettyavatars.com/api/letter/100?random-name=true"/>
-  <br />
-  <br />
-</center>
+</div>
 
 #### CDN URL
 
@@ -55,11 +53,9 @@ import Avatar from 'prettyavatars'
 
 ### letter-plain
 
-<center>
+<div align="center">
   <img src="https://prettyavatars.com/api/letter-plain/100?random-name=true"/>
-  <br />
-  <br />
-</center>
+</div>
 
 <!-- prettier-ignore -->
 ```jsx
@@ -97,11 +93,9 @@ import Avatar from 'prettyavatars'
 
 Credit goes to [laurentpayot/minidenticons](https://github.com/laurentpayot/minidenticons)
 
-<center>
+<div align="center">
   <img src="https://prettyavatars.com/api/pixel-art/100?random-name=true"/>
-  <br />
-  <br />
-</center>
+</div>
 
 #### CDN
 
@@ -127,11 +121,9 @@ import Avatar from 'prettyavatars'
 
 Credit goes to [boringdesigners/boring-avatars](https://github.com/boringdesigners/boring-avatars)
 
-<center>
+<div align="center">
   <img src="https://prettyavatars.com/api/beam/100?random-name=true"/>
-  <br />
-  <br />
-</center>
+</div>
 
 #### CDN
 
@@ -157,11 +149,9 @@ import Avatar from 'prettyavatars'
 
 Credit goes to [boringdesigners/boring-avatars](https://github.com/boringdesigners/boring-avatars)
 
-<center>
+<div align="center">
   <img src="https://prettyavatars.com/api/bauhaus/100?random-name=true"/>
-  <br />
-  <br />
-</center>
+</div>
 
 #### CDN
 
@@ -187,11 +177,9 @@ import Avatar from 'prettyavatars'
 
 Credit goes to [boringdesigners/boring-avatars](https://github.com/boringdesigners/boring-avatars)
 
-<center>
+<div align="center">
   <img src="https://prettyavatars.com/api/ring/100?random-name=true"/>
-  <br />
-  <br />
-</center>
+</div>
 
 #### CDN
 
@@ -217,11 +205,9 @@ import Avatar from 'prettyavatars'
 
 Credit goes to [boringdesigners/boring-avatars](https://github.com/boringdesigners/boring-avatars)
 
-<center>
+<div align="center">
   <img src="https://prettyavatars.com/api/sunset/100?random-name=true"/>
-  <br />
-  <br />
-</center>
+</div>
 
 #### CDN
 
@@ -247,11 +233,9 @@ import Avatar from 'prettyavatars'
 
 Credit goes to [boringdesigners/boring-avatars](https://github.com/boringdesigners/boring-avatars)
 
-<center>
+<div align="center">
   <img src="https://prettyavatars.com/api/marble/100?random-name=true"/>
-  <br />
-  <br />
-</center>
+</div>
 
 #### CDN
 
