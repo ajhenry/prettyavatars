@@ -41,10 +41,11 @@ https://prettyavatars.com/api/letter/100
 
 #### React Component
 
+<!-- prettier-ignore -->
 ```jsx
 import Avatar from 'prettyavatars'
 
-;<Avatar
+<Avatar
   variant='letter'
   name='John Doe'
   size={100}
@@ -60,10 +61,11 @@ import Avatar from 'prettyavatars'
   <br />
 </center>
 
+<!-- prettier-ignore -->
 ```jsx
 import { LetterAvatar } from 'prettyavatars'
 
-;<Avatar
+<Avatar
   variant='letter'
   name='John Doe'
   size={100}
@@ -79,10 +81,11 @@ https://prettyavatars.com/api/letter-plain/100
 
 #### React
 
+<!-- prettier-ignore -->
 ```jsx
 import Avatar from 'prettyavatars'
 
-;<Avatar
+<Avatar
   variant='letter-plain'
   name='John Doe'
   size={100}
@@ -108,10 +111,11 @@ https://prettyavatars.com/api/pixel-art/100
 
 #### React
 
+<!-- prettier-ignore -->
 ```jsx
 import Avatar from 'prettyavatars'
 
-;<Avatar
+<Avatar
   variant='pixel-art'
   name='John Doe'
   size={100}
@@ -137,10 +141,11 @@ https://prettyavatars.com/api/beam/100
 
 #### React
 
+<!-- prettier-ignore -->
 ```jsx
 import Avatar from 'prettyavatars'
 
-;<Avatar
+<Avatar
   variant='beam'
   name='John Doe'
   size={100}
@@ -166,10 +171,11 @@ https://prettyavatars.com/api/bauhaus/100
 
 #### React
 
+<!-- prettier-ignore -->
 ```jsx
 import Avatar from 'prettyavatars'
 
-;<Avatar
+<Avatar
   variant='bauhaus'
   name='John Doe'
   size={100}
@@ -195,10 +201,11 @@ https://prettyavatars.com/api/ring/100
 
 #### React
 
+<!-- prettier-ignore -->
 ```jsx
 import Avatar from 'prettyavatars'
 
-;<Avatar
+<Avatar
   variant='ring'
   name='John Doe'
   size={100}
@@ -224,10 +231,11 @@ https://prettyavatars.com/api/sunset/100
 
 #### React
 
+<!-- prettier-ignore -->
 ```jsx
 import Avatar from 'prettyavatars'
 
-;<Avatar
+<Avatar
   variant='sunset'
   name='John Doe'
   size={100}
@@ -253,10 +261,11 @@ https://prettyavatars.com/api/marble/100
 
 #### React
 
+<!-- prettier-ignore -->
 ```jsx
 import Avatar from 'prettyavatars'
 
-;<Avatar
+<Avatar
   variant=''
   name='J
 ohn Doe'
