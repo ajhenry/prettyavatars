@@ -53,9 +53,7 @@ export default function HomePage() {
                 <CopyButton value='https://prettyavatars.com/api/letter/120' />
               </div>
               <div className='mt-1 text-left text-sm'>
-                Avatars served from the CDN are free for{' '}
-                <span className='underline'>non-commercial</span> use and
-                subject to the limits in the{' '}
+                Avatars served from the CDN are subject to the limits in the{' '}
                 <UnderlineLink href='/terms'>Terms & Conditions</UnderlineLink>.
               </div>
             </div>

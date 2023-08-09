@@ -16,14 +16,19 @@ import { Variant } from 'prettyavatars'
 import { PropsWithChildren, useState } from 'react'
 import { SketchPicker } from 'react-color'
 
-const variants: Variant[] = [
-  'letter',
-  'pixel',
-  'bauhaus',
-  'ring',
-  'beam',
-  'sunset',
-  'marble',
+const variants: { variant: Variant; attribution?: string }[] = [
+  { variant: 'letter' },
+  { variant: 'letter-plain' },
+  {
+    variant: 'pixel-art',
+    attribution: 'https://github.com/laurentpayot/minidenticons',
+  },
+  { variant: 'beam', attribution: 'boringavatars.com' },
+  { variant: 'pixel', attribution: 'boringavatars.com' },
+  { variant: 'bauhaus', attribution: 'boringavatars.com' },
+  { variant: 'ring', attribution: 'boringavatars.com' },
+  { variant: 'sunset', attribution: 'boringavatars.com' },
+  { variant: 'marble', attribution: 'boringavatars.com' },
 ]
 
 // Picks a random color palette
@@ -188,9 +193,14 @@ export const Playground: React.FC<PlaygroundProps> = () => {
           </button>
         </Holder>
       </div>
-      {variants.map((variant) => (
+      {variants.map(({ variant, attribution }) => (
         <div className='mt-8' key={variant}>
           <h3 className='text-left text-3xl'>{variant}</h3>
+          {attribution && (
+            <p className='w-full text-left mt-2'>
+              Created by <a href={attribution}>{attribution}</a>
+            </p>
+          )}
           <div className={clsx('mt-4 flex flex-row flex-wrap justify-around')}>
             {Array.from({ length: isDesktop ? 14 : 6 }).map((_, i) => (
               <AvatarBlock
