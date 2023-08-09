@@ -43,7 +43,13 @@ https://prettyavatars.com/api/letter/100
 
 ```jsx
 import Avatar from 'prettyavatars'
-;<Avatar variant='letter' name='John Doe' size={100} />
+
+;<Avatar
+  variant='letter'
+  name='John Doe'
+  size={100}
+  colors={['#92A1C6', '#146A7C', '#F0AB3D', '#C271B4', '#C20D90']}
+/>
 ```
 
 ### letter-plain
@@ -56,7 +62,13 @@ import Avatar from 'prettyavatars'
 
 ```jsx
 import { LetterAvatar } from 'prettyavatars'
-;<LetterAvatar name='John Doe' size={100} />
+
+;<Avatar
+  variant='letter'
+  name='John Doe'
+  size={100}
+  colors={['#92A1C6', '#146A7C', '#F0AB3D', '#C271B4', '#C20D90']}
+/>
 ```
 
 #### CDN
@@ -69,7 +81,13 @@ https://prettyavatars.com/api/letter-plain/100
 
 ```jsx
 import Avatar from 'prettyavatars'
-;<Avatar variant='letter-plain' name='John Doe' size={100} />
+
+;<Avatar
+  variant='letter-plain'
+  name='John Doe'
+  size={100}
+  colors={['#92A1C6', '#146A7C', '#F0AB3D', '#C271B4', '#C20D90']}
+/>
 ```
 
 ### pixel-art
@@ -92,7 +110,13 @@ https://prettyavatars.com/api/pixel-art/100
 
 ```jsx
 import Avatar from 'prettyavatars'
-;<Avatar variant='pixel-art' name='John Doe' size={100} />
+
+;<Avatar
+  variant='pixel-art'
+  name='John Doe'
+  size={100}
+  colors={['#92A1C6', '#146A7C', '#F0AB3D', '#C271B4', '#C20D90']}
+/>
 ```
 
 ### beam
@@ -115,7 +139,13 @@ https://prettyavatars.com/api/beam/100
 
 ```jsx
 import Avatar from 'prettyavatars'
-;<Avatar variant='beam' name='John Doe' size={100} />
+
+;<Avatar
+  variant='beam'
+  name='John Doe'
+  size={100}
+  colors={['#92A1C6', '#146A7C', '#F0AB3D', '#C271B4', '#C20D90']}
+/>
 ```
 
 ### bauhaus
@@ -138,7 +168,13 @@ https://prettyavatars.com/api/bauhaus/100
 
 ```jsx
 import Avatar from 'prettyavatars'
-;<Avatar variant='bauhaus' name='John Doe' size={100} />
+
+;<Avatar
+  variant='bauhaus'
+  name='John Doe'
+  size={100}
+  colors={['#92A1C6', '#146A7C', '#F0AB3D', '#C271B4', '#C20D90']}
+/>
 ```
 
 ### ring
@@ -161,7 +197,13 @@ https://prettyavatars.com/api/ring/100
 
 ```jsx
 import Avatar from 'prettyavatars'
-;<Avatar variant='ring' name='John Doe' size={100} />
+
+;<Avatar
+  variant='ring'
+  name='John Doe'
+  size={100}
+  colors={['#92A1C6', '#146A7C', '#F0AB3D', '#C271B4', '#C20D90']}
+/>
 ```
 
 ### sunset
@@ -184,7 +226,13 @@ https://prettyavatars.com/api/sunset/100
 
 ```jsx
 import Avatar from 'prettyavatars'
-;<Avatar variant='sunset' name='John Doe' size={100} />
+
+;<Avatar
+  variant='sunset'
+  name='John Doe'
+  size={100}
+  colors={['#92A1C6', '#146A7C', '#F0AB3D', '#C271B4', '#C20D90']}
+/>
 ```
 
 ### marble
@@ -207,8 +255,16 @@ https://prettyavatars.com/api/marble/100
 
 ```jsx
 import Avatar from 'prettyavatars'
-;<Avatar variant='' name='John Doe' size={100} />
+
+;<Avatar
+  variant=''
+  name='J
+ohn Doe'
+  size={100}
+/>
 ```
+
+colors={['#92A1C6', '#146A7C', '#F0AB3D', '#C271B4', '#C20D90']}
 
 ## API
 
