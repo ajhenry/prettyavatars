@@ -250,14 +250,12 @@ https://prettyavatars.com/api/marble/100
 import Avatar from 'prettyavatars'
 
 <Avatar
-  variant=''
-  name='J
-ohn Doe'
+  variant='marble'
+  name='John Doe'
   size={100}
+  colors={['#92A1C6', '#146A7C', '#F0AB3D', '#C271B4', '#C20D90']}
 />
 ```
-
-colors={['#92A1C6', '#146A7C', '#F0AB3D', '#C271B4', '#C20D90']}
 
 ## API
 
