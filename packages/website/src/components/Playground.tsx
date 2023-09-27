@@ -23,6 +23,7 @@ const variants: { variant: Variant; attribution?: string }[] = [
     variant: 'pixel-art',
     attribution: 'https://github.com/laurentpayot/minidenticons',
   },
+  { variant: 'smile' },
   { variant: 'beam', attribution: 'boringavatars.com' },
   { variant: 'pixel', attribution: 'boringavatars.com' },
   { variant: 'bauhaus', attribution: 'boringavatars.com' },

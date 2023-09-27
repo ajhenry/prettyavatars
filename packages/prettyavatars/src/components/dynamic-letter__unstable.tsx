@@ -1,13 +1,16 @@
 import Color from 'color'
 import * as React from 'react'
 import ReactHtmlParser from 'react-html-parser'
+import TextToSVG from 'text-to-svg'
 import { letterMap } from '../lib/letters'
 import { getInitials, getRandomColor, hashCode, sfc } from '../lib/utils'
 import { AvatarProps } from './avatar'
 
 const SIZE = 80
 
-export interface AvatarLetterProps extends AvatarProps {
+export interface AvatarDynamicLetterProps extends AvatarProps {
+  fontUrl?: string
+  unstable?: boolean
   plain?: boolean
 }
 
@@ -15,21 +18,68 @@ const getInterLetters = (letter: string, fill: string) => {
   return `<path d="${letterMap[letter]}" fill="${fill}" />`
 }
 
-const AvatarLetter: React.FC<AvatarLetterProps> = (props) => {
-  const { name, colors, plain } = props
-  const seed = hashCode(name)
-  const initials = getInitials(name)
-  const color = getRandomColor(seed, colors, colors.length)
-
+const AvatarDynamicLetter: React.FC<AvatarDynamicLetterProps> = (props) => {
+  const { name, colors, fontUrl, unstable, plain } = props
+  const [loader, setLoader] = React.useState<TextToSVG | null>(null)
+  const [initials, setInitials] = React.useState<string>(getInitials(name))
+  const [seed, setSeed] = React.useState(hashCode(props.name))
+  const [color, setColor] = React.useState<string>(
+    getRandomColor(seed, colors, colors.length)
+  )
   const lightened = Color(color)
-    .lighten(0.2 + sfc(seed)() * 0.5)
+    .lighten(0.2 + sfc(unstable ? Math.random() : seed)() * 0.5)
     .hex()
   const darkened = Color(color)
-    .darken(0.2 + sfc(seed + 1)() * 0.5)
+    .darken(0.2 + sfc(unstable ? Math.random() : seed + 1)() * 0.5)
     .hex()
 
+  React.useEffect(() => {
+    TextToSVG.load(
+      fontUrl ?? '/fonts/Inter-Black.ttf',
+      function (err, textToSVG) {
+        if (!textToSVG) {
+          if (window === undefined) {
+            // eslint-disable-next-line no-console
+            console.log(err)
+          }
+          return
+        }
+        if (!loader) {
+          setLoader(textToSVG)
+        }
+      }
+    )
+  }, [loader, fontUrl])
+
+  React.useEffect(() => {
+    setInitials(getInitials(name))
+    setSeed(hashCode(name))
+  }, [name])
+
+  // Needed for SSR to work
+  React.useEffect(() => {
+    setColor(getRandomColor(seed, colors, colors.length))
+  }, [seed, colors, name])
+
   const generatePath = (letters: string) => {
-    return getInterLetters(letters, darkened)
+    if (!fontUrl) {
+      return getInterLetters(letters, darkened)
+    }
+
+    // This is still a work in progress for dynamic fonts
+    if (!loader) {
+      return
+    }
+
+    return loader.getPath(letters, {
+      x: SIZE / 2,
+      y: SIZE / 2,
+      anchor: 'center middle',
+      fontSize: letters.length === 2 ? SIZE - 48 : SIZE - 32,
+      attributes: {
+        fill: darkened,
+      },
+    })
   }
 
   const SQUARE_CONST = 0.05
@@ -102,4 +152,4 @@ const AvatarLetter: React.FC<AvatarLetterProps> = (props) => {
   )
 }
 
-export default AvatarLetter
+export default AvatarDynamicLetter

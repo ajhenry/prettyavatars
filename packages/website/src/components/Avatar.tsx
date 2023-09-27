@@ -1,8 +1,7 @@
 // import Avatar, { AvatarProps } from 'pretty-avatars'
+import { generateName } from '@/lib/fake'
 import Avatar, { Variant } from 'prettyavatars'
 import { useState } from 'react'
-
-import { generateName } from '@/lib/fake'
 
 interface AvatarBlockProps {
   variant?: Variant

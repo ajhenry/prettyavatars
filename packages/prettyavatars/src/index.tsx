@@ -6,6 +6,7 @@ export type { AvatarLetterProps } from './components/letter'
 export type { AvatarMarbleProps } from './components/marble'
 export type { AvatarPixelProps } from './components/pixel'
 export type { AvatarRingProps } from './components/ring'
+export type { AvatarSmileProps } from './components/smile'
 export type { AvatarSunsetProps } from './components/sunset'
 
 export default Avatar
