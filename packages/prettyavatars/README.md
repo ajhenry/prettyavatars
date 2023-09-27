@@ -47,12 +47,12 @@ import LetterAvatar from 'prettyavatars/letter'
 
 ### Props
 
-| Prop        | Type                                                                                                 |
-| ----------- | ---------------------------------------------------------------------------------------------------- |
-| **variant** | oneOf: `letter`, `letter-plain`, `pixel-art`, `marble`, `beam`, `pixel`,`sunset`, `ring`, `bauhaus`, |
-| **name**    | string                                                                                               |
-| size        | number or string, `40px` (default)                                                                   |
-| square      | boolean: `false` (default)                                                                           |
-| colors      | array of colors                                                                                      |
+| Prop        | Type                                                                                                          |
+| ----------- | ------------------------------------------------------------------------------------------------------------- |
+| **variant** | oneOf: `letter`, `letter-plain`, `pixel-art`, `smile`, `marble`, `beam`, `pixel`,`sunset`, `ring`, `bauhaus`, |
+| **name**    | string                                                                                                        |
+| size        | number or string, `40px` (default)                                                                            |
+| square      | boolean: `false` (default)                                                                                    |
+| colors      | array of colors                                                                                               |
 
 <sub>\* bold means required</sub>

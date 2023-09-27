@@ -4,7 +4,7 @@
     "module": "commonjs",
     "target": "es6",
     "outDir": "build",
-    "allowJs": true,
+    "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,

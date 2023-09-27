@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "firebase": "firebase emulators:start --only firestore,auth",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

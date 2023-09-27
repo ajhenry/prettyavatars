@@ -1,22 +1,10 @@
 import { CopyButton } from '@/components/buttons/CopyButton'
 import Layout from '@/components/layout/Layout'
 import UnderlineLink from '@/components/links/UnderlineLink'
+import { Playground } from '@/components/Playground'
 
 import Seo from '@/components/Seo'
 import clsx from 'clsx'
-import dynamic from 'next/dynamic'
-
-// Need to do a dumbass dynamic import because of hydration errors
-const Playground = dynamic(
-  () =>
-    import('@/components/Playground').then(
-      (playground) => playground.Playground
-    ),
-  {
-    loading: () => <p>Loading...</p>,
-    ssr: true,
-  }
-)
 
 export default function HomePage() {
   return (
