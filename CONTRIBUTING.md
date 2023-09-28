@@ -16,3 +16,7 @@ yarn dev
 This will setup the project to watch for changes and start a local server at <localhost:3000>.
 
 The React package is found in `packages/prettyavatars` and the website is found in `packages/website`.
+
+## Publishing a Release
+
+Run `yarn release` to publish a new release. Lerna will take care of everything for you.

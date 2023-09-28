@@ -76,6 +76,18 @@ import Avatar from 'prettyavatars'
 />
 ```
 
+### smile
+
+<div align="center">
+  <img src="https://prettyavatars.com/api/smile/100?random-name=true"/>
+</div>
+
+#### CDN
+
+```url
+https://prettyavatars.com/api/smile/100
+```
+
 ### pixel-art
 
 Credit goes to [laurentpayot/minidenticons](https://github.com/laurentpayot/minidenticons)
